@@ -4,15 +4,7 @@ import { getFirestore, collection, addDoc, query, where, orderBy, limit, getDocs
 
 const chatEndpoint = "https://api.openai.com/v1/chat/completions";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDHklv0v7a4tM25dQmmZ1jrBQbHPUURqZ8",
-  authDomain: "aideation-final.firebaseapp.com",
-  projectId: "aideation-final",
-  storageBucket: "aideation-final.appspot.com",
-  messagingSenderId: "607769666659",
-  appId: "1:607769666659:web:40fe1514e8cec2c39ec456",
-  measurementId: "G-NDEJDLCBKL"
-};
+
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -897,4 +889,5 @@ function renderHistoryCards() {
 
 
 //async loadIdeasFromDB();
+
 
