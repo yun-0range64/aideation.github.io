@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIdeation</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<header class="main-header">
+  <div class="header-left">
+    <img src="./logo.png" alt="로고" class="logo" />
+  </div>
+  <nav class="header-right">
+  
+    <button id="viewAllCards" class="step4-btn-3 hidden">히스토리 보기</button>
+
+  </nav>
+</header>
+
+<body id="page-index">
+       <img src="./cha.gif" alt="AI 캐릭터" style="
+  position:absolute;
+  bottom: calc(30% - 100px);
+  left: 18%;
+  width: 200px;
+  height: auto;
+  z-index: 100;
+" />
+<!-- GPT 로딩 중 표시 -->
+<div id="gpt-loading" class="hidden">
+  <div class="spinner"></div>
+</div>
+  <!-- STEP 1: 이름, API KEY 입력 화면 -->
+  <div id="step1" class="step">
+ 
+
+    <h2>나만의 아이디어를 생성하러 떠나볼까요?</h2>
+    <div class="input-wrapper">
+    <input type="text" id="username" placeholder="당신의 이름을 입력해주세요.">
+    <input type="text" id="apiKey" placeholder="당신의 API KEY를 입력해주세요.">
+    </div>
+    <button id="toStep2">다음으로</button>
+  </div>
+
+  <!-- STEP 2: 아이디어 정보 입력 화면 -->
+  <div id="step2" class="step hidden">
+    <h2>아이디어를 생성하기 위한 정보를 알려주세요!</h2>
+    <input type="text" id="projectTitle" placeholder="프로젝트 제목을 작성해주세요.">
+    <input type="text" id="target" placeholder="예상 사용자 군과 연령대 및 특성에 대해 작성해주세요.">
+    <input type="text" id="background" placeholder="왜 이 아이디어를 시작했는지, 현재 문제 등 배경을 작성해주세요.">
+    <input type="text" id="expected" placeholder="이 아이디어가 달성하려는 효과 및 목표 등을 작성해주세요.">
+    <button id="toStep3">생성하기</button>
+  </div>
+
+  <!-- STEP 3: 로딩 화면 -->
+  <div id="step3" class="step hidden">
+    <p id="loadingText">아이디어를 생성하는 중 입니다. 잠시만 기다려주세요.</p>
+    <div class="loading-spinner"></div>
+  </div>
+
+  <!-- STEP 4: 결과 화면 -->
+   <!-- <div id="canvas-container">
+  <div id="zoom-wrapper"> -->
+    <div id="ideaCardContainer">
+    
+  <button id="findNewPlanet" class="step4-btn-1 hidden">발산 아이디어 생성</button>
+   
+  <div id="step4" class="step hidden">
+    <div id="mainCard" class="idea-card">
+      <h2 id="ideaTitle">아이디어 제목</h2>
+      <p id="ideaSummary">한줄 요약</p>
+      <div id="ideaKeywords" class="keywords"></div>
+      <ul id="ideaDetails"></ul>
+      <!-- <button id="retry">다른 행성도 찾아볼까?</button> -->
+    </div>
+  </div>
+    <!-- </div>
+  </div> -->
+  </div>
+  <button id="exploreMore" class="step4-btn-2 hidden">수렴 아이디어 생성</button>
+
+
+
+  <!-- step4 이후 질문창 -->
+   <div id="gpt-modal-overlay" class="hidden">
+<div id="gpt-question-box" class="hidden">
+   <button class="modal-close" id="close-question-box">✕</button>
+  <div id="gpt-questions"></div>
+  <textarea id="user-response" placeholder="여기에 아이디어를 작성해보세요!" rows="5"></textarea>
+  <button id="submit-idea" style="margin-top: 12px;">아이디어 제출</button>
+
+</div>
+</div>
+
+
+<div id="history-modal-overlay" class="hidden">
+    <div id="history-modal-box">
+        <button class="modal-close" id="close-history-box">✕</button>
+        <h2 style="text-align: center; color: white;">아이디어 히스토리</h2>
+
+        <div id="historyFilter">
+  <button id="sort-latest" class="history-sort-btn active">최신순</button>
+  <button id="sort-oldest" class="history-sort-btn">오래된순</button>
+</div>
+
+        <div id="historyCardList">
+            </div>
+    </div>
+</div>
+
+<div id="cardNavigation" class="hidden-nav">
+    <button id="prevCard">
+        <span class="button-icon">⬆</span>
+        <span class="button-text">이전 아이디어</span>
+    </button>
+    <button id="nextCard">
+        <span class="button-icon">⬇</span>
+        <span class="button-text">다음 아이디어</span>
+    </button>
+</div>
+
+
+  <script src="script.js" type="module"></script>
+ 
+</html>
